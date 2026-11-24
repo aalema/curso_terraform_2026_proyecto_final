@@ -13,6 +13,8 @@ resource "aws_s3_bucket_versioning" "estado" {
   }
 }
 
+# Excepción justificada: No hace falta cifrado KMS ya que es una practica
+#trivy:ignore:AWS-0132
 resource "aws_s3_bucket_server_side_encryption_configuration" "estado" {
   bucket = aws_s3_bucket.estado.id
 

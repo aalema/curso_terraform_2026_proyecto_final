@@ -36,6 +36,8 @@ resource "aws_vpc_security_group_ingress_rule" "entrada" {
   ip_protocol       = "tcp"
 }
 
+# Excepción justificada: Damos salida a Internet para permitir actualizaciones
+#trivy:ignore:AWS-0104
 resource "aws_vpc_security_group_egress_rule" "todo" {
   security_group_id = aws_security_group.web.id
   description       = "Salida a Internet (actualizaciones e instalacion de paquetes)"
@@ -50,6 +52,14 @@ resource "aws_instance" "web" {
   vpc_security_group_ids      = [aws_security_group.web.id]
   user_data_replace_on_change = true
 
+  metadata_options {
+    http_endpoint = "enabled"
+    http_tokens = "required"
+  }
+  
+  root_block_device {
+    encrypted = true
+  }
 
   user_data = <<-EOT
     #!/bin/bash

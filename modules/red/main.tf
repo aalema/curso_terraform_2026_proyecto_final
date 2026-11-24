@@ -10,6 +10,9 @@ resource "aws_vpc" "principal" {
   }
 }
 
+# Excepción justificada: Asignamos direcciones IP públicas a las instancias
+# al no crear un balanceador de carga
+#trivy:ignore:AWS-0164
 resource "aws_subnet" "publica" {
   count = length(var.zonas)
 

@@ -1,6 +1,0 @@
-# Copia este fichero como terraform.tfvars (no se sube a Git)
-prefijo    = "nombre-apellido"
-usar_floci = false
-
-# Solo con Floci: una AMI de Floci UI (Compute)
-# ami_id = "ami-xxxxxxxx"
