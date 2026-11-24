@@ -1,7 +1,7 @@
 # Documentación del proyecto
 
-**Autor/a:** ___
-**Opción:** AWS / Floci (deja la que uses)
+**Autor/a:** Antonio de Andrés Lema
+**Opción:** AWS
 
 ## 1. Arquitectura
 
@@ -26,11 +26,11 @@ Explica los módulos, los directorios de entorno y los bucles que usas.
 
 ### Hallazgos de Trivy aceptados
 
-Cada excepción (`#trivy:ignore:...`) debe estar justificada aquí y en un comentario junto al recurso.
-
 | Regla | Severidad | Justificación |
 | --- | --- | --- |
-| ___ | ___ | ___ |
+| AWS-0104 | CRITICAL | Las instancias EC2 deben tener conexión a Internet para aplicar actualizaciones e instalar paquetes |
+| AWS-0164 | HIGH | Las instancias EC2 deben tener direcciones IP públicas ya que no configuramos un balanceador de carga |
+| AWS-0132 | HIGH | Ciframos el bucket con una llave gestionada por el usuario ya que en un entorno de prácticas no es necesario KMS |
 
 ## 4. CI/CD
 
